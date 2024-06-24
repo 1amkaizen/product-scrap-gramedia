@@ -34,7 +34,8 @@ def get_product_urls(driver, pages, query=None):
         current_page = 1
         while True:
             product_elements = driver.find_elements(By.XPATH, '//*[@id="products-list"]/a')
-
+            print(f"Menelusuri halaman {current_page}...")
+            
             for product_element in product_elements:
                 url = product_element.get_attribute('href')
                 product_urls.append(url)
@@ -57,6 +58,7 @@ def get_product_urls(driver, pages, query=None):
     except Exception as e:
         print('Terjadi kesalahan saat mengumpulkan URL produk:', str(e))
         return []
+    
 
 # Fungsi untuk mengambil data dari setiap halaman produk
 def scrape_product_data(driver, product_url):
